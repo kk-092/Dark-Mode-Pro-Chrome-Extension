@@ -48,7 +48,8 @@ It is built for **speed, simplicity, and full control** over your browsing exper
 ## 🎬 Demo
 
 <p align="center">
-  <img src="https://via.placeholder.com/900x500.png?text=Add+Your+Demo+GIF+Here" alt="Dark Mode Pro Demo"/>
+  <img src="img/DMP_Ex1.png" alt="Dark Mode Pro Demo"/>
+   <img src="img/DMP_Ex7.png" alt="Dark Mode Pro Demo"/>
 </p>
 
 👉 Replace this with your real `demo.gif` for best impact
@@ -94,7 +95,7 @@ We only request necessary permissions to apply dark mode on websites.
 
 ## 📦 Installation
 
-1. Download or install from Chrome Web Store
+1. Download or install from Chrome Web Store or from official website
 2. Pin the extension in Chrome
 3. Click and enable Dark Mode Pro
 4. Enjoy better browsing 😎
@@ -104,11 +105,15 @@ We only request necessary permissions to apply dark mode on websites.
 ## 📸 Preview
 
 <p align="center">
-  <img src="https://via.placeholder.com/800x400.png?text=Screenshot+1"/>
+  <img src="img/SS_DMP.png"/>
 </p>
 
 <p align="center">
-  <img src="https://via.placeholder.com/800x400.png?text=Screenshot+2"/>
+  <img src="img/SS_DMP2.png"/>
+</p>
+
+<p align="center">
+  <img src="img/SS_DMP3.png"/>
 </p>
 
 ---
