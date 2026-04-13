@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Dark Mode Pro – Eye Protection & Night Theme for All Websites",
+  "version": "3.0",
+  "description": "Enable beautiful dark mode on every website. Reduce eye strain and improve browsing experience.",
+  "permissions": ["activeTab", "scripting", "storage", "tabs", "commands", "alarms", "contextMenus"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "img/icon16.png",
+      "48": "img/icon48.png",
+      "128": "img/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["utils.js", "content.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ],
+  "commands": {
+    "toggle-dark-mode": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+D",
+        "mac": "Command+Shift+D"
+      },
+      "description": "Toggle dark mode on the current page"
+    }
+  },
+  "icons": {
+    "16": "img/icon16.png",
+    "48": "img/icon48.png",
+    "128": "img/icon128.png"
+  }
+}

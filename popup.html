@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dark Mode Pro</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body class="popup-body" id="popupBody">
+
+  <!-- ── Tab Bar ── -->
+  <nav class="tab-bar" role="tablist" aria-label="Settings tabs">
+    <button class="tab-btn active" data-tab="main"     role="tab" aria-selected="true">
+      <span class="tab-icon">🌙</span><span class="tab-label">Main</span>
+    </button>
+    <button class="tab-btn" data-tab="themes" role="tab" aria-selected="false">
+      <span class="tab-icon">🎨</span><span class="tab-label">Themes</span>
+    </button>
+    <button class="tab-btn" data-tab="adjust" role="tab" aria-selected="false">
+      <span class="tab-icon">🔆</span><span class="tab-label">Adjust</span>
+    </button>
+    <button class="tab-btn" data-tab="schedule" role="tab" aria-selected="false">
+      <span class="tab-icon">⏰</span><span class="tab-label">Schedule</span>
+    </button>
+    <button class="tab-btn" data-tab="sites" role="tab" aria-selected="false">
+      <span class="tab-icon">🌐</span><span class="tab-label">Sites</span>
+    </button>
+    <button class="tab-btn" data-tab="custom" role="tab" aria-selected="false">
+      <span class="tab-icon">🖌️</span><span class="tab-label">Custom</span>
+    </button>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TAB 1 — MAIN
+  ══════════════════════════════════════════════════════════ -->
+  <div class="tab-panel active" id="tab-main" role="tabpanel">
+    <div class="panel-body">
+
+      <!-- Header -->
+      <div class="popup-header">
+        <div class="header-left">
+          <span class="moon-icon" aria-hidden="true">🌙</span>
+          <span class="popup-title">Dark Mode Pro</span>
+          <span class="version-tag">v3</span>
+        </div>
+        <span class="badge status-badge" id="statusBadge">OFF</span>
+      </div>
+
+      <!-- Screen mock -->
+      <div class="screen-wrap">
+        <div class="screen-mock" id="screenMock" aria-hidden="true">
+          <div class="screen-topbar">
+            <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+            <div class="screen-url-bar"></div>
+          </div>
+          <div class="screen-content">
+            <div class="screen-bar wide"></div>
+            <div class="screen-bar medium"></div>
+            <div class="screen-bar wide"></div>
+            <div class="screen-bar short"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main toggle -->
+      <button id="toggleBtn" class="toggle-btn btn-off" aria-pressed="false">
+        <span id="btnIcon" aria-hidden="true">🌑</span>
+        <span id="btnText">Enable Dark Mode</span>
+      </button>
+
+      <!-- Global + Auto row -->
+      <div class="option-rows">
+        <div class="option-row">
+          <div class="option-label">
+            <span class="option-icon">🌍</span>
+            <div>
+              <div class="option-name">Global Dark Mode</div>
+              <div class="option-desc">Apply to all sites by default</div>
+            </div>
+          </div>
+          <label class="switch" aria-label="Global dark mode">
+            <input type="checkbox" id="globalToggle" />
+            <span class="slider-track"></span>
+          </label>
+        </div>
+        <div class="option-row">
+          <div class="option-label">
+            <span class="option-icon">🔮</span>
+            <div>
+              <div class="option-name">Auto Mode</div>
+              <div class="option-desc">Follow system theme</div>
+            </div>
+          </div>
+          <label class="switch" aria-label="Auto mode">
+            <input type="checkbox" id="autoModeToggle" />
+            <span class="slider-track"></span>
+          </label>
+        </div>
+        <div class="option-row">
+          <div class="option-label">
+            <span class="option-icon">🖼️</span>
+            <div>
+              <div class="option-name">Invert Images</div>
+              <div class="option-desc">Invert image colours</div>
+            </div>
+          </div>
+          <label class="switch" aria-label="Invert images">
+            <input type="checkbox" id="invertImagesToggle" />
+            <span class="slider-track"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Info chips -->
+      <div class="info-row" aria-live="polite">
+        <span class="info-chip" id="themeChip">🎨 Dark</span>
+        <span class="info-chip" id="scheduleChip">⏰ Manual</span>
+        <span class="info-chip" id="siteCountChip">🌐 0 sites</span>
+      </div>
+
+      <!-- Keyboard shortcut hint -->
+      <p class="shortcut-hint">⌨️ <kbd>Ctrl+Shift+D</kbd> · Right-click for context menu</p>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TAB 2 — THEMES
+  ══════════════════════════════════════════════════════════ -->
+  <div class="tab-panel" id="tab-themes" role="tabpanel">
+    <div class="panel-body">
+      <h2 class="panel-heading">🎨 Choose a Theme</h2>
+      <p class="panel-sub">Tap a theme to apply it instantly.</p>
+      <div class="themes-grid" id="themesGrid" role="radiogroup" aria-label="Theme selection">
+
+        <button class="theme-card" data-theme="dark" role="radio" aria-checked="true">
+          <div class="theme-preview" style="--tp-bg:#121212;--tp-bar:#3a3a5c;--tp-acc:#9d8aff">
+            <div class="tp-bar"></div><div class="tp-bar short"></div><div class="tp-bar acc"></div>
+          </div>
+          <div class="theme-label">🌑 Dark</div>
+        </button>
+
+        <button class="theme-card" data-theme="sepia" role="radio" aria-checked="false">
+          <div class="theme-preview" style="--tp-bg:#1c1510;--tp-bar:#5a4a28;--tp-acc:#d4a843">
+            <div class="tp-bar"></div><div class="tp-bar short"></div><div class="tp-bar acc"></div>
+          </div>
+          <div class="theme-label">📜 Sepia</div>
+        </button>
+
+        <button class="theme-card" data-theme="highContrast" role="radio" aria-checked="false">
+          <div class="theme-preview" style="--tp-bg:#000000;--tp-bar:#ffffff;--tp-acc:#ffff00">
+            <div class="tp-bar"></div><div class="tp-bar short"></div><div class="tp-bar acc"></div>
+          </div>
+          <div class="theme-label">⚡ Hi-Contrast</div>
+        </button>
+
+        <button class="theme-card" data-theme="midnight" role="radio" aria-checked="false">
+          <div class="theme-preview" style="--tp-bg:#0a0e1a;--tp-bar:#1e3a5f;--tp-acc:#60a5fa">
+            <div class="tp-bar"></div><div class="tp-bar short"></div><div class="tp-bar acc"></div>
+          </div>
+          <div class="theme-label">🌌 Midnight</div>
+        </button>
+
+        <button class="theme-card" data-theme="forest" role="radio" aria-checked="false">
+          <div class="theme-preview" style="--tp-bg:#0a1a0d;--tp-bar:#1a4a28;--tp-acc:#4ade80">
+            <div class="tp-bar"></div><div class="tp-bar short"></div><div class="tp-bar acc"></div>
+          </div>
+          <div class="theme-label">🌿 Forest</div>
+        </button>
+
+        <button class="theme-card" data-theme="custom" role="radio" aria-checked="false">
+          <div class="theme-preview custom-preview" id="customThemePreview">
+            <div class="tp-bar"></div><div class="tp-bar short"></div><div class="tp-bar acc"></div>
+          </div>
+          <div class="theme-label">🎨 Custom</div>
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TAB 3 — ADJUST
+  ══════════════════════════════════════════════════════════ -->
+  <div class="tab-panel" id="tab-adjust" role="tabpanel">
+    <div class="panel-body">
+      <h2 class="panel-heading">🔆 Adjust Display</h2>
+      <p class="panel-sub">Per-site brightness &amp; contrast — updated live.</p>
+
+      <div class="slider-group">
+        <div class="slider-label">
+          <span>☀️ Brightness</span>
+          <output class="slider-val" id="brightnessVal" for="brightnessSlider">100%</output>
+        </div>
+        <input type="range" id="brightnessSlider" min="30" max="150" value="100"
+               aria-label="Brightness" aria-valuemin="30" aria-valuemax="150" />
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-label">
+          <span>🎛️ Contrast</span>
+          <output class="slider-val" id="contrastVal" for="contrastSlider">100%</output>
+        </div>
+        <input type="range" id="contrastSlider" min="50" max="200" value="100"
+               aria-label="Contrast" aria-valuemin="50" aria-valuemax="200" />
+      </div>
+
+      <button class="btn-secondary" id="resetFilters">↺ Reset to defaults</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TAB 4 — SCHEDULE
+  ══════════════════════════════════════════════════════════ -->
+  <div class="tab-panel" id="tab-schedule" role="tabpanel">
+    <div class="panel-body">
+      <h2 class="panel-heading">⏰ Auto Schedule</h2>
+      <p class="panel-sub">Auto-enable dark mode between set hours.</p>
+
+      <div class="option-row mb-12">
+        <div class="option-label">
+          <span class="option-icon">📅</span>
+          <div>
+            <div class="option-name">Enable Schedule</div>
+            <div class="option-desc">Runs in background every minute</div>
+          </div>
+        </div>
+        <label class="switch" aria-label="Enable schedule">
+          <input type="checkbox" id="scheduleToggle" />
+          <span class="slider-track"></span>
+        </label>
+      </div>
+
+      <div class="time-row">
+        <div class="time-field">
+          <label for="scheduleStart">🌆 Enable at</label>
+          <input type="time" id="scheduleStart" value="20:00" />
+        </div>
+        <div class="time-arrow" aria-hidden="true">→</div>
+        <div class="time-field">
+          <label for="scheduleEnd">🌅 Disable at</label>
+          <input type="time" id="scheduleEnd" value="07:00" />
+        </div>
+      </div>
+
+      <p class="schedule-note" id="scheduleNote" aria-live="polite">Schedule is off.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TAB 5 — SITES
+  ══════════════════════════════════════════════════════════ -->
+  <div class="tab-panel" id="tab-sites" role="tabpanel">
+    <div class="panel-body">
+      <h2 class="panel-heading">🌐 Site Manager</h2>
+      <p class="panel-sub">Whitelist sites where dark mode is always skipped.</p>
+
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-num" id="statEnabled">0</div>
+          <div class="stat-lbl">Active Sites</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" id="statWhitelisted">0</div>
+          <div class="stat-lbl">Whitelisted</div>
+        </div>
+      </div>
+
+      <div class="option-row mb-12">
+        <div class="option-label">
+          <span class="option-icon">🔒</span>
+          <div>
+            <div class="option-name">Whitelist this site</div>
+            <div class="site-origin" id="currentOrigin">—</div>
+          </div>
+        </div>
+        <label class="switch" aria-label="Whitelist current site">
+          <input type="checkbox" id="whitelistCurrentSite" />
+          <span class="slider-track"></span>
+        </label>
+      </div>
+
+      <div class="wl-list" id="whitelistList" role="list">
+        <p class="wl-empty" id="wlEmpty">No sites whitelisted yet.</p>
+      </div>
+
+      <!-- Export / Import -->
+      <div class="io-row">
+        <button class="btn-secondary" id="exportBtn">⬆️ Export Settings</button>
+        <label class="btn-secondary btn-import" for="importFile">⬇️ Import Settings</label>
+        <input type="file" id="importFile" accept=".json" style="display:none" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TAB 6 — CUSTOM THEME
+  ══════════════════════════════════════════════════════════ -->
+  <div class="tab-panel" id="tab-custom" role="tabpanel">
+    <div class="panel-body">
+      <h2 class="panel-heading">🖌️ Custom Theme</h2>
+      <p class="panel-sub">Pick colours and save your own theme.</p>
+
+      <div class="color-grid">
+        <div class="color-field">
+          <label for="colorBg">Background</label>
+          <div class="color-input-wrap">
+            <input type="color" id="colorBg"   value="#121212" />
+            <input type="text"  id="colorBgHex" value="#121212" maxlength="7" />
+          </div>
+        </div>
+        <div class="color-field">
+          <label for="colorBg2">Surface</label>
+          <div class="color-input-wrap">
+            <input type="color" id="colorBg2"   value="#1e1e1e" />
+            <input type="text"  id="colorBg2Hex" value="#1e1e1e" maxlength="7" />
+          </div>
+        </div>
+        <div class="color-field">
+          <label for="colorText">Text</label>
+          <div class="color-input-wrap">
+            <input type="color" id="colorText"   value="#e8e8e8" />
+            <input type="text"  id="colorTextHex" value="#e8e8e8" maxlength="7" />
+          </div>
+        </div>
+        <div class="color-field">
+          <label for="colorLink">Links</label>
+          <div class="color-input-wrap">
+            <input type="color" id="colorLink"   value="#9d8aff" />
+            <input type="text"  id="colorLinkHex" value="#9d8aff" maxlength="7" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Live preview swatch -->
+      <div class="custom-preview-card" id="customPreviewCard">
+        <div class="cpv-topbar"></div>
+        <div class="cpv-body">
+          <div class="cpv-bar wide"></div>
+          <div class="cpv-bar medium"></div>
+          <a class="cpv-link">Sample link text</a>
+        </div>
+      </div>
+
+      <div class="custom-actions">
+        <button class="btn-primary" id="saveCustomTheme">💾 Save &amp; Apply</button>
+        <button class="btn-secondary" id="resetCustomTheme">↺ Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="utils.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
